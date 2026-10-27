@@ -26,8 +26,8 @@ export const staff: Staff[] = [
 ]
 
 export const auctions: Auction[] = [
-  { id: 'a1', productId: 'p2', condition: 'Open box — excellent', currentBid: 792000, startingPrice: 680000, increment: 10000, ends: 'Today, 18:40', status: 'Ending soon', bids: [{ name: 'A. Yusuf', amount: 792000, time: '4 min ago' }, { name: 'K. James', amount: 782000, time: '18 min ago' }, { name: 'S. Ade', amount: 760000, time: '41 min ago' }] },
-  { id: 'a2', productId: 'p4', condition: 'New — distress sale', currentBid: 312000, startingPrice: 300000, increment: 5000, ends: 'Tomorrow, 12:00', status: 'Live', bids: [{ name: 'D. Okoye', amount: 312000, time: '1 hour ago' }] },
+  { id: 'a1', productId: 'p2', condition: 'Open box — excellent', currentBid: 792000, startingPrice: 680000, increment: 10000, ends: 'Today, 18:40', endAt: '2025-10-27T18:40', startAt: '2025-10-27T08:00', approved: true, submittedBy: 'admin', status: 'Ending soon', bids: [{ name: 'A. Yusuf', amount: 792000, time: '4 min ago' }, { name: 'K. James', amount: 782000, time: '18 min ago' }, { name: 'S. Ade', amount: 760000, time: '41 min ago' }] },
+  { id: 'a2', productId: 'p4', condition: 'New — distress sale', currentBid: 312000, startingPrice: 300000, increment: 5000, ends: 'Tomorrow, 12:00', endAt: '2025-10-28T12:00', startAt: '2025-10-26T09:00', approved: true, submittedBy: 'admin', status: 'Live', bids: [{ name: 'D. Okoye', amount: 312000, time: '1 hour ago' }] },
 ]
 
 export const articles: Article[] = [
@@ -45,7 +45,11 @@ export const initialState: AppState = {
     { id: 'n1', title: 'Order HDK-1048 is out for delivery', body: 'Your iPhone 15 Pro is expected today before 6pm.', read: false, tone: 'success' },
     { id: 'n2', title: 'New auction ending soon', body: 'Galaxy S24 Ultra open-box listing closes at 18:40.', read: false, tone: 'warning' },
     { id: 'n3', title: 'Points added', body: 'You earned 420 points from your latest demo order.', read: true, tone: 'info' },
-  ], points: 6840, voted: false,
+  ], points: 6840, voted: false, customerVotedStaffId: undefined, agentCredit: { plan: 2, totalDue: 0, paid: 0, outstanding: 0, blocked: false }, salesPointRules: [
+    { id: 'sp1', productId: 'p1', role: 'agent', points: 12 },
+    { id: 'sp2', productId: 'p1', role: 'staff', points: 20, monthlyTarget: 15000000 },
+    { id: 'sp3', productId: 'p2', role: 'ambassador', points: 10 },
+  ],
   orders: [
     { id: 'HDK-1048', customer: 'Olumide A.', customerId: 'c1', date: 'Oct 25, 2025', items: [{ productId: 'p1', quantity: 1, color: 'Natural Titanium', storage: '256GB' }], subtotal: 1199999, delivery: 3500, total: 1203499, payment: 'Bank transfer', status: 'Out for delivery', deliveryStep: 5, address: '14 Bourdillon Road, Ikoyi, Lagos' },
     { id: 'HDK-1039', customer: 'Olumide A.', customerId: 'c1', date: 'Oct 12, 2025', items: [{ productId: 'p3', quantity: 1, color: 'Obsidian', storage: '128GB' }], subtotal: 899999, delivery: 0, total: 899999, payment: 'Demo card', status: 'Delivered', deliveryStep: 7, address: '14 Bourdillon Road, Ikoyi, Lagos' },
