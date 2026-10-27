@@ -27,10 +27,11 @@ No real authentication is connected. Use the role switcher in any portal header,
 - `/agent` — wholesale catalogue, persistent bulk-order builder, and commission estimates
 - `/ambassador` — referrals, copied referral link, reward redemption, and leaderboard
 - `/admin` — command centre, product and inventory operations, order status sync, people, finance/audit, content, support, and settings
+- `/admin/monitoring` — admin-only staff and agent oversight: staff sales/target/points, agent draft units, submitted bulk orders, and shared activity
 
 ## Mock state behavior
 
-All records are centralized in `src/data.ts` and exposed through the `DemoStateProvider` in `src/store.tsx`. Storefront and portal screens share the same state. Examples include inventory adjustments reflected in catalogue availability, simulated checkout creating customer orders, admin delivery status changes appearing in customer tracking, ticket creation appearing in the support desk, and agent bulk orders persisting across portal routes.
+All records are centralized in `src/data.ts` and exposed through the `DemoStateProvider` in `src/store.tsx`. Storefront and portal screens share the same state. Examples include inventory adjustments reflected in catalogue availability, simulated checkout creating customer orders, admin delivery status changes appearing in customer tracking, ticket creation appearing in the support desk, agent bulk orders persisting across portal routes, and admin monitoring reflecting staff and agent activity.
 
 The demo state is persisted to `localStorage` under `hardek-demo-state-v1`. Use **Reset demo data** in the portal sidebar or Admin → Settings to restore the original seed data. Financial values use integer minor units and are formatted as Nigerian naira.
 
