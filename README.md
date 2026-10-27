@@ -1,0 +1,51 @@
+# Hardek Telecommunication Frontend MVP
+
+Hardek is a premium React + TypeScript frontend demonstration for a Nigerian phone retail and telecommunications business. It combines a public storefront with customer, staff, sales-agent, brand-ambassador, and administrator portals.
+
+## Run locally
+
+```bash
+pnpm install
+pnpm dev
+```
+
+The production build is:
+
+```bash
+pnpm build
+```
+
+The managed preview runs on port `3000`.
+
+## Demo access
+
+No real authentication is connected. Use the role switcher in any portal header, or these routes directly:
+
+- `/` — public storefront
+- `/customer` — customer account, orders, simulated tracking, loyalty, wishlist, bids, and support
+- `/staff` — staff performance, sales points, weekly voting, and Employee of the Month scoring
+- `/agent` — wholesale catalogue, persistent bulk-order builder, and commission estimates
+- `/ambassador` — referrals, copied referral link, reward redemption, and leaderboard
+- `/admin` — command centre, product and inventory operations, order status sync, people, finance/audit, content, support, and settings
+
+## Mock state behavior
+
+All records are centralized in `src/data.ts` and exposed through the `DemoStateProvider` in `src/store.tsx`. Storefront and portal screens share the same state. Examples include inventory adjustments reflected in catalogue availability, simulated checkout creating customer orders, admin delivery status changes appearing in customer tracking, ticket creation appearing in the support desk, and agent bulk orders persisting across portal routes.
+
+The demo state is persisted to `localStorage` under `hardek-demo-state-v1`. Use **Reset demo data** in the portal sidebar or Admin → Settings to restore the original seed data. Financial values use integer minor units and are formatted as Nigerian naira.
+
+## Deliberate frontend-only boundaries
+
+Payments, crypto equivalents, delivery tracking, auctions, pre-orders, bids, commissions, redemptions, salaries, rewards, referrals, support responses, audit entries, and authentication are simulated. The app does not collect real card details or wallet private keys and does not claim that money, bids, payouts, courier events, or production account changes have occurred.
+
+Backend integration seams are the shared state actions and domain types in `src/types.ts`, `src/store.tsx`, and `src/lib.ts`. A production integration would replace those mock actions with authenticated API calls, persistence, payment-provider webhooks, courier events, and server-side authorization.
+
+## Project structure
+
+- `src/App.tsx` — connected storefront, commerce flows, portals, and admin views
+- `src/data.ts` — realistic seed data and product imagery
+- `src/store.tsx` — localStorage-backed reducer and shared mock mutations
+- `src/lib.ts` — currency-safe calculations, formatters, search, and CSV export
+- `src/types.ts` — domain records and action contracts
+- `public/manus-routes.json` — complete managed preview route manifest
+- `plan.md` / `TODO.md` — approved design and delivery outcomes
